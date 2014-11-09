@@ -124,25 +124,32 @@ def fix_links(lines):
 			el_inline = separate_elements(el_inline)
 			for el in el_inline:	
 				index = 0
+				href_exists = True
 				while "href" not in el[index]:
 					index += 1
-				relevant = el[index]
-				if "http" in relevant:
-					new_line = ' '.join(el)
-					result.append(new_line)
-				else:
-					relevant = relevant.replace('href="', '')
-					if "../" in relevant:
-						modded_element = 'href=' + '"http://inst.eecs.berkeley.edu/~cs10/labs/' + relevant.replace("../", "")
-					elif '/bjc-r' in relevant:
-						modded_element = 'href=' + '"http://bjc.berkeley.edu' + relevant
-					elif '#' in relevant:
-						modded_element = 'href=' + relevant
+					if index >= len(el):
+						href_exists = False
+						break
+				if href_exists:
+					relevant = el[index]
+					if "http" in relevant:
+						new_line = ' '.join(el)
+						result.append(new_line)
 					else:
-						modded_element = 'href=' + '"http://bjc.berkeley.edu/' + relevant
-					el[index] = modded_element
-					new_line = ' '.join(el)
-					result.append(new_line)
+						relevant = relevant.replace('href="', '')
+						if "../" in relevant:
+							modded_element = 'href=' + '"http://inst.eecs.berkeley.edu/~cs10/labs/' + relevant.replace("../", "")
+						elif '/bjc-r' in relevant:
+							modded_element = 'href=' + '"http://bjc.berkeley.edu' + relevant
+						elif '#' in relevant:
+							modded_element = 'href=' + relevant
+						else:
+							modded_element = 'href=' + '"http://bjc.berkeley.edu/' + relevant
+						el[index] = modded_element
+						new_line = ' '.join(el)
+						result.append(new_line)
+				else:
+					pass
 		
 		elif "src" in line:
 			el_inline = line.split() 
