@@ -96,7 +96,7 @@ def remove_whitespace(el_inline):
 	"""Changes src = to src= in a split line"""
 	result = []
 	i = 0
-	while i<len(el_inline):
+	while i < len(el_inline):
 		if el_inline[i] == "href" or el_inline[i] == "src":
 			if el_inline[i+1] == "=":
 				modded = el_inline[i] + el_inline[i+1] + el_inline[i+2]
@@ -107,9 +107,13 @@ def remove_whitespace(el_inline):
 				result.append(modded)
 				i += 2 
 		elif el_inline[i] == "href=" or el_inline[i] == "src=":
-			modded = el_inline[i] + el_inline[i+1]
-			result.append(modded)
-			i += 2
+			if (i + 1) == len(el_inline):
+				result.append(el_inline[i])
+				i += 1
+			else:
+				modded = el_inline[i] + el_inline[i+1]
+				result.append(modded)
+				i += 2
 		else:
 			result.append(el_inline[i])
 			i += 1 
