@@ -3,19 +3,10 @@ from lab_parser import *
 from tar_file import *
 import shutil, os, argparse
 
-
-def move_files(filename, src_folder):
-    shutil.copy(filename[:-6] + ".xml", src_folder + "/sequential")
-    for f in os.listdir("html"):
-        shutil.copy("html/" + f, src_folder + "/html")
-    for f in os.listdir("vertical"):
-        shutil.copy("vertical/" + f, src_folder + "/vertical")
-
 def stage_files(args, lst):
     path = "bjc-r/topic/berkeley_bjc/"
-    print(args)
+    found = False
     if args == "":
-        print(os.listdir(path))
         for folder in os.listdir(path):
             if "." not in folder:
                 for f in os.listdir(path + "/" + folder):
@@ -27,10 +18,20 @@ def stage_files(args, lst):
                 for folder in os.listdir(path):
                     if ".topic" not in folder:
                         if f in os.listdir(path + folder):
+                            found = True
                             lst.append(path + folder + "/" + f)
+                if not found:
+                    print("---file '" + f + "' not found.")
+                    print("Closing program...")
+                    sys.exit()
             else:
-                for filename in os.listdir(path + f):
-                    lst.append(path + f + "/" + filename)
+                if f in os.listdir(path):
+                    for filename in os.listdir(path + f):
+                        lst.append(path + f + "/" + filename)
+                else:
+                    print("---directory '" + f + "' not found.")
+                    print("Closing program...")
+                    sys.exit()
     return lst
 
 
@@ -87,9 +88,8 @@ def main():
             sys.exit()
 
 
-    files= []
+    files = []
     stage_files(args.file, files)
-    print(files)
 
 
     # call parser
