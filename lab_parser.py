@@ -333,6 +333,7 @@ def make_overview(name, output, destination):
 
 def make_page(name, line, output, destination):
 	output.write('  <vertical url_name="' + name + '"/>\n')
+	## check for quiz here, and call make_quiz instead
 	make_html(line, destination)
 	make_companion_xml(name, line, destination)
 	make_vertical(name, line, destination)
