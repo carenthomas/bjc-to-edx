@@ -1,0 +1,65 @@
+<html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script>    <head>
+ <script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script>       
+         <title>HOFs with Recursion: Introduction</title>
+       
+    </head>
+    <body>
+ <h1>Introduction</h1>         <p>
+             HOFs and recursion are two of the most important programming techniques that we have learned.
+             One limitation in our use of recursion so far has been that each recursive function can only make a set
+             number of recursive calls. As we will see in today's lab, we can make recursive functions more general using
+             HOFs. This will allow us to make arbitrary numbers of recursive calls. As a result, we can carry out operations
+             on structures more complicated than the factorials or the fibonacci numbers.
+         </p>
+         <p>
+             Framework for the activities in this lab can be found in this
+ <a class="run" href="http://inst.eecs.berkeley.edu/~cs10/labs/prog/hofs/hofs-with-recursion-starter-file.xml">starter file</a>.         </p>
+ 
+ 		<p>        
+ 	       	Some reminders: if you don't know what a block does, try it! Remember that you can run any block by clicking on it in the
+     	    scripts area. If you try a block and still can't figure out how it works, you can right-click on it and select "help...",
+             which will give you a description of what the block does.
+         </p>
+ <img src="http://inst.eecs.berkeley.edu/~cs10/labs/img/hof/right-click-on-block.png" alt="dropdown menu from right-clicking on block"/> <img src="http://inst.eecs.berkeley.edu/~cs10/labs/img/hof/append-help.png" alt="help box for 'append'"/>    </body>
+ </html>

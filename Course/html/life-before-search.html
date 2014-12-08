@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script> <html><head><!-- put the following in exactly --><script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script><title>Before Search Engines and the Internet</title><!--ORIGINAL NAME: Life Before Search--></head><body><p>Now consider a single cluster of technologies: the Internet and web search. These technologies have only been popular for 20 - 30 years, but its hard to imagine life before them.<br></p> <h1>Life Before Search</h1> Before the Internet became the phenomenon that it is today, it was considerably more difficult to share information with others, especially if they weren't in the same area of the world. In addition to you and your classmates' submissions in the discussion forum, <a target="_blank" href="http://cybernetnews.com/cybernotes-life-before-the-internet-was-like/"><span class="nolink">CyberNetNews</span></a> mentions a number of differences between then (15 years ago) and now.<br><br>The Internet today provides a tremendous service of making information available to anyone in the world that can connect to it. "Information" can take the form of company websites, email, instant messaging, audio / video, and many, many other possibilities.<br><h2>Early Search Engines</h2>The time of the Internet before search engines was tough as well. The Internet was the same decentralized, wildly diverse collection of information that it is today (although a good bit smaller), but was also terribly difficult to navigate: it was comparable to a telephone network without a phone book. Finding your way to new places on the Internet often involved someone telling you about their site, or stumbling across a site from one you were already familiar with.<br>Not being ones to shy from problems, computer scientists noticed this shortcoming and began working on technology that would automatically <span style="font-style: italic;">crawl</span> and <span style="font-style: italic;">index </span>(more on these later in <a href="http://veritas.eecs.berkeley.edu/courses/mod/resource/view.php?id=1890">How

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script>     <head>
+ <!-- put the following in exactly --><script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script>         <title>
+             What kind of pattern was love?
+         </title><!--ORIGINAL NAME: Overview-->
+     </head>
+     <body>
+ <h1>What kind of pattern was Love?</h1>         <div class="assessment-data"
+         type="multiplechoice" identifier="mc1"
+         hasinlinefeedback="true" maxchoices="1"
+         responseIdentifier="resp1" shuffle="true">
+             <div class="prompt">
+                 <p>
+                     In the <i>big picture</i>, what kind of pattern was that entire MapReduce operation (love)?
+                 </p>
+             </div>
+             <div class="choice" identifier="c1">
+                 <div class="text">
+                     Mapping
+                 </div>
+                 <div class="feedback">
+                     No; mapping patters apply a transformation to every element in a set.
+                 </div>
+             </div>
+ 
+             <div class="choice" identifier="c2">
+                 <div class="text">
+                     Finding
+                 </div>
+                 <div class="feedback">
+                     No; more than one item is being found.
+                 </div>
+             </div>
+             <div class="choice" identifier="c3">
+                 <div class="text">
+                     Counting
+                 </div>
+                 <div class="feedback">
+                     No; in counting algorithms, a number is returned that relates to some quantity in the set.
+                 </div>
+             </div>
+             <div class="choice" identifier="c4">
+                 <div class="text">
+                     Filtering
+                 </div>
+                 <div class="feedback">
+                     Right!
+                 </div>
+             </div>
+             <div class="choice" identifier="c5">
+                 <div class="text">
+                     Testing
+                 </div>
+                 <div class="feedback">
+                     No.
+                 </div>
+             </div>
+             <div class="choice" identifier="c6">
+                 <div class="text">
+                     Combining
+                 </div>
+                 <div class="feedback">
+                     No; in combining patterns a set of things is combined into a single thing.
+                 </div>
+             </div>
+             <div class="responseDeclaration" identifier="resp1">
+                 <div class="correctResponse" identifier="c2"></div>
+ 
+             </div>
+         </div>
+ 
+     </body>
+ </html>

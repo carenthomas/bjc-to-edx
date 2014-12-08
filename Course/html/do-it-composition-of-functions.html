@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script> 	<head>
+ 		<!-- put the following in exactly -->
+ <script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script><title> Composition of Functions </title> 		<!--ORIGINAL NAME: Do it: Composition of Functions-->
+ 	</head>
+ 	<body>
+ <h1>Do it: Composition of Functions</h1> 		Our custom-made blocks are blocks like any other, and we can use them in other block definitions. To demonstrate this, we are going to make a block that computes the maximum of three values.
+ 		<br>
+ 		<br>
+ 		<div style="margin-left: 40px;">
+ <img border="0" title="There should be an image here" alt="There should be an image here" src="http://bjc.berkeley.edu/bjc-r/img/prog/max-with-3-args-block-editor-BYOB.jpg" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab04/Max_with_3_Args/max3Args.jpg"> 			<br>
+ 		</div>
+ 		<br>
+ 		Repeat the steps from the last tutorial to make this version of the <code>max</code> block also  take only numbers. Then, in the script for the block, use two copies of the two-input <code>max</code> block:
+ 		<br>
+ 		<br>
+ 		<div style="margin-left: 40px;">
+ <img border="0" title="Script for 'max' with three arguments" alt="Script for 'max' with three arguments" src="http://bjc.berkeley.edu/bjc-r/img/prog/max-xyz.png" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab03/max3.jpg"> 			<br>
+ 		</div>
+ 		<br><h2> Turn it In </h2> Your challenge is to make the following two blocks work:
+ 		<ol>
+ 			<li>
+ 				A three-input addition operator that accepts only numbers.
+ 				  <div style="margin-left: 40px;">
+ 					<br>
+ <img border="0" title="Three-argument addition operator" alt="Three-argument addition operator" src="http://bjc.berkeley.edu/bjc-r/img/prog/3-arg-addition-block-BYOB.gif" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab04/Max_with_3_Args/3argPlusExample.gif"> 					<br>
+ 				</div>
+ 			</li>
+ 			<br>
+ 			<li>
+ 				A block named "sum of two smallest" that takes three numbers as inputs, and reports the sum of the two smallest:
+ 				  <div style="margin-left: 40px;">
+ 					<br>
+ <img border="0" title="Sum of two smallest" alt="sum of two smallest block" src="http://bjc.berkeley.edu/bjc-r/img/prog/sum2small.png" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab04/Max_with_3_Args/3argJoin.gif"> 				</div>
+ 			</li>
+ 		</ol>
+ 	</body>
+ </html>

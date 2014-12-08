@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script> 	<head>
+ <!-- put the following in exactly --><script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script><title>Position on the Stage</title><!--ORIGINAL NAME: Position on the Scratch Stage--> 	</head>
+ 	<body>
+ <h1>Position on the Stage</h1> 		<p>
+ 			The sprite occupies a position (x,y) on the stage where x represents the horizontal position, from -240 (left) to 240 (right), and y represents the vertical position, from -180 (bottom) to 180 (top). Here's a picture:
+ 		</p>
+ <p align="center"><img border="0" title="X and Y Axis on Stage" alt="X and Y Axis on Stage" src="http://bjc.berkeley.edu/bjc-r/img/sys/axes.png" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab03/x-y-scratch.png"> 		</p>
+ 		<p>
+ 			The black sprite is at the center of the stage, called the <em>origin, </em>with coordinates (0, 0).
+ 			The green sprite is to the right of the origin, so its x position is positive; it's below the origin,
+ 			so its y position is negative. Each grid line above represents 20 steps, so the green sprite's coordinates are (140, -100).
+ 			 Take some time to make sure you understand this, discussing it with your partner or classmate.
+ 
+ 		</p>
+ 		<p>
+ 			What are the coordinates of the red sprite?
+ 		</p>
+ 		<p>
+ 			The next lesson asks you to move a random character around the stage within certain boundaries. Keep in mind the coordinate system shown above.
+ 		</p>
+ 	</body>
+ </html>

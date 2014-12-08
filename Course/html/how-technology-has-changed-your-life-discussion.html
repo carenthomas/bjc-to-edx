@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script>     <head>
+ <!-- put the following in exactly --><script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script>         <title>Discussion: How technology has changed your life</title>
+     </head>
+     <body>
+ <h1>How Technology has Change your Life</h1>         <p>
+             Technology has changed all of our lives, even in a short couple of decades.
+             Other than how we look for apartments, how has technology impacted your way of life?
+             Describe an activity that no one else has mentioned that has been changed by technology.
+             Also briefly mention how it used to be done prior to the change in technology and how that
+             method has changed due to technology.
+         </p>
+         <p>
+             <b>For example:</b>
+             How people look for an apartment has changed over the past 20 years.
+             In the past, people might look in the newspaper classifieds or drive around town looking for signs.
+             Today people check Craigslist or another website to quickly locate all of the apartments available in an area.
+         </p>
+     </body>
+ </html>

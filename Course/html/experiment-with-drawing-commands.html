@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script> 	<head>
+ 		<!-- put the following in exactly -->
+ <script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script> 		<title>Experiment with drawing commands</title>
+ 		<!--ORIGINAL NAME: Experiment with drawing commands-->
+ 	</head>
+ 	<body>
+ <h1>Experiment with drawing commands</h1> 		Try to get comfortable with the pieces shown below. Figure out what each one does and try to use these pieces to draw a square or a simple picture.
+ 		<br>
+ 		<br>
+ <div style="margin-left: 200px;"><img border="0" title="Move Pieces Image" alt="Move Pieces Image" src="http://bjc.berkeley.edu/bjc-r/img/prog/prog-move-turn-clear-pen-down-blocks-BYOB.gif" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab01/MovePieces.gif"> 			<br>
+ 		</div>
+ 		<div style="text-align: left;">
+ 			Note
+ 			<br>
+ 			<ul>
+ 				<li>
+ 					Once the pen is down, it stays down, even in a different script, until you say <code>pen up</code>.</li>
+ 				<li>
+ 					It's easiest if your sprite wears the turtle costume (the arrowhead) so you can see the direction in which it's facing very clearly.
+ 			<br>
+ 			</li>
+ 				<li>
+ 					You also will want to show the direction and x and y position of the character. In the Motion tab you can select for these to be shown on the stage (like below).
+ 					<br>
+ 				</li>
+ 				<ul>
+ 					<li>
+ 						Try it - Does the turn command change the x or y position?
+ 						<br>
+ 					</li>
+ 				</ul>
+ 			</ul>
+ <div style="margin-left: 40px;"><img border="0" src="http://bjc.berkeley.edu/bjc-r/img/sys/motion-blocks-highlighting-Xposition.png" alt="There should be image here" title="There should be image here" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab02/Drawing_tips/X-POsition.jpg"><img border="0" title="There should be image here" style="vertical-align: top; padding-left: 40px;" alt="There should be image here" src="http://bjc.berkeley.edu/bjc-r/img/sys/positions-displayed.png" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab02/Drawing_tips/PositionsDisplayed.jpg"> 			</div>
+ 		</div>
+ 	</body>
+ </html>

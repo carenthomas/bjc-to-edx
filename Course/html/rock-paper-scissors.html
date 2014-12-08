@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script> 	<head>
+ <!-- put the following in exactly --><script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js"></script><title>Rock, Paper, Scissors</title><!--ORIGINAL NAME: Rock, Paper, Scissors--> 	</head>
+ 	<body>
+ <h1>Rock, Paper, Scissors</h1> 		For this activity, you will create the <em>Rock, Paper, Scissors</em> game. <h2>Step 1:</h2>
+ 		<p>
+ 			First, make a script that makes the cat and the duck say either <code>Rock</code>, <code>Paper</code>, or <code>Scissors</code> when the green flag is pressed.
+ 			<br>
+ 			<br>
+ <img border="0" src="http://bjc.berkeley.edu/bjc-r/img/prog/prog-Rock-Paper-Scissors-Intro-BYOB.jpg" alt="Rock, Paper, Scissors Introduction" title="Rock, Paper, Scissors Introduction" origsrc="http://veritas.eecs.berkeley.edu/courses/file.php/17/Images/Lab02/RockPaperScissorsIntro.jpg"> 			<br>
+ 		</p>
+ 		<p>
+ 			Exercises
+ 		</p>
+ 		<ul>
+ 			<li>
+ Add a third character. After the duck and the cat pick their choice and say it, the third character should say who wins. You may find <a href="http://bjc.berkeley.edu/bjc-r/img/prog/RPS.pdf" target="new">this chart</a> useful. 			</li>
+ 			<li>
+ 				Add <code>cat score</code> and <code>duck score</code> variables that keep track of how many times each character has won. You can make these variables visible on the stage by clicking on the check-box next to the variable name.
+ 			</li>
+ 		</ul>
+ 	</body>
+ </html>

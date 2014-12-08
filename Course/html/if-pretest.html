@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+ <html>
+ <script>
+function bindEscKey() {
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $('#snap-frame').contents().bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+    if (!$('#snap-toggle').length) {
+        // Adds a snap button at top left portion of screen to toggle snap window.
+        $('body').prepend('<img type="button" id="snap-toggle" type="image" src="http://edge.edx.org/c4x/BerkeleyX/CS10/asset/alonso.png" width="32" height="35" style="-moz-border-radius: 10px; -webkit-border-radius: 40px; opacity: 0.5; position: fixed; top: 11px; left: 9px; z-index: 9999;">');
+
+        // Causes snap iframe to fade in and out when the snap button is clicked.
+        $('#snap-toggle').click(function () {
+            $('#snap-frame').fadeToggle();
+        });
+
+        // Causes transparency of snap-toggle button.
+        $("#snap-toggle").hover(function(){
+            $("#snap-toggle").css("opacity","1");
+        }, function() {
+            $("#snap-toggle").css("opacity","0.5");
+        });
+    }
+
+    if (!$('#snap-frame').length) {
+        // Adds a nearly full screen snap iframe that can be toggled on and off.
+        $('body').prepend('<iframe id="snap-frame" onload="bindEscKey()" class="zoom-in" style="width: 95.8%; height: 100%; position: fixed; right: 0; top: 0; z-index: 9999;" src="/static/index.html" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>');
+        $('#snap-frame').hide();
+        $('#snap-frame').height($(window).height());
+        $('#snap-frame').width($(window).width() * 0.958);
+
+        // Escape key toggles snap iframe on and off (visible and hidden) with esc key.
+        $(document).bind('keydown', function(e) {
+            if (e.which == 27) {
+                $('#snap-frame').fadeToggle();
+            }
+        });
+    }
+</script> <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <script type="text/javascript" src="http://bjc.berkeley.edu/bjc-r/llab/loader.js" ></script> <title>If: What Would You Expect?</title>
+ </head>
+ 
+ <body>
+ <h1>If: What would you expect?</h1> <p>Consider the following script:</p>
+ <p><img src="http://bjc.berkeley.edu/bjc-r/img/prog/if-pretest.png" alt="if script" /></p> <p>Here is the help screen for <code>join</code> in case you need it:</p>
+ <p><img src="http://bjc.berkeley.edu/bjc-r/img/sys/help-screen-for-join-block-BYOB.jpg" alt="join block" /></p> <form id="form1" name="form1" method="post" action="if-pretest-soln.html">
+ <p>	1. What is the value of <code>x</code> at the end of the script above? 
+   <input type="text" name="textfield" id="textfield" />
+ </p>
+ <p>2. What is the value of <code>y</code> at the end of the script above? 
+   <input type="text" name="textfield2" id="textfield2" />
+ </p>
+ <p>3. What will the sprite say? 
+   <input type="text" name="textfield3" id="textfield3" />
+ </p>
+ 
+   <input type="submit" name="button" id="button" value="Submit" />
+ </form>
+ <p>&nbsp;</p>
+ 
+ </body>
+ </html>
+ 
