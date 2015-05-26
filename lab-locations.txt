@@ -1,0 +1,51 @@
+
+Week 1:
+Welcome to Snap! [intro_new/1-introduction.topic] 
+
+Week 2:
+Build Your Own Blocks intro_new/2-loops-variables.topic]
+Conditionals [intro_new/3-conditionals.topic]
+
+Week 3:
+Functions [intro_new/4-abstraction-testing.topic]
+Lists [lists/lists-I.topic]
+
+Week 4:
+Algorithms [areas/algorithms.topic]
+Algorithmic Complexity [areas/algorithm-complexity.topic]
+
+Week 5:
+Finch Robots [robots/robots.topic]
+
+Week 6:
+Concurrency [areas/concurrency.topic]
+Trees and Fractals Using Recursion [recur/recursion-trees-fractals.topic]
+
+Week 7:
+Recursive Reporters [recur/recursive-reporters.topic]
+
+Week 8:
+Tic Tac Toe [lists/tic-tac-toe.topic]
+
+Week 9:
+No Labs
+
+Week 10:
+No Labs
+
+Week 11:
+The Internet [areas/internet.topic]
+Practice with HOFs and Functions as Data [hofs/hofs-practice.topic]
+
+Week 12:
+Besides Blocks: Welcome to Python [python/besides-blocks-intro.topic]
+
+Week 13:
+Besides Blocks: Data Structures in Python
+Besides Blocks: Data in Python
+
+Week 14:
+No Labs
+
+Week 15: 
+No Labs
