@@ -141,19 +141,32 @@ def fix_links(lines, destination):
 						new_line = ' '.join(el)
 						result.append(new_line)
 					else:
-						relevant = relevant.replace('href="', '')[0:-1]
-					if "../" in relevant:
-						relevant = '/bjc-r/' + relevant.replace("../", "")
-					if "#" in relevant:
-						pass
-					else:
-						filename = relevant.rsplit('/', 1)[1]
-						modded_element = 'href=' + '"/static/' + filename + '"'
-						if os.path.exists(os.getcwd() + relevant):
-							copyfile(os.getcwd() + relevant, destination + '/static/' + filename)
-						el[index] = modded_element
-						new_line = ' '.join(el)
-						result.append(new_line)
+						extra = ''
+						relevant = relevant.replace('href="', '').rsplit('"', 1)[0]
+						if '<' in relevant:
+							extra = "<" + relevant.rsplit("<", 1)[1]
+							relevant = relevant.rsplit("<", 1)[0]
+						if '>' in relevant:
+							extra = '>' + extra
+							relevant = relevant[0:-1]
+						if "../" in relevant:
+							relevant = '/bjc-r/' + relevant.replace("../", "")
+						if "#" in relevant:
+							pass
+						else:
+							filename = relevant.rsplit('/', 1)
+							if len(filename) == 1:
+								#this happens when the source file lives in the current directory
+								#ERROR: the image will not be moved to the static folder
+								filename = filename[0]
+							else:
+								filename = filename[1]
+							modded_element = 'href=' + '"/static/' + filename + '"'
+							if os.path.exists(os.getcwd() + relevant):
+								copyfile(os.getcwd() + relevant, destination + '/static/' + filename)
+							el[index] = modded_element + extra
+							new_line = ' '.join(el)
+							result.append(new_line)
 				else:
 					pass
 		
@@ -170,10 +183,16 @@ def fix_links(lines, destination):
 					new_line = ' '.join(el)
 					result.append(new_line)
 				else:
-					relevant = relevant.replace('src="', '')[0:-1]
+					extra = ''
+					if '<' in relevant:
+						extra = "<" + relevant.rsplit("<", 1)[1]
+						relevant = relevant.rsplit("<", 1)[0]
+					if '>' in relevant:
+							extra = '>' + extra
+							relevant = relevant[0:-1]
 					if "../" in relevant:
 						relevant = '/bjc-r/' + relevant.replace("../", "")
-
+					relevant = relevant.replace('src="', '').rsplit('"', 1)[0]
 					filename = relevant.rsplit('/', 1)
 					if len(filename) == 1:
 						#this happens when the source file lives in the current directory
@@ -185,7 +204,7 @@ def fix_links(lines, destination):
 					modded_element = 'src=' + '"/static/' + filename + '"'
 					if os.path.exists(os.getcwd() + relevant):
 						copyfile(os.getcwd() + relevant, destination + '/static/' + filename)
-					el[index] = modded_element
+					el[index] = modded_element + extra
 					new_line = ' '.join(el)
 					result.append(new_line)
 		else:
@@ -408,12 +427,15 @@ def place_labs(destination):
 			pass
 		else:
 			lab = ((item.strip("/n")).rsplit(" ", 1)[1][1:-1]).rsplit("/", 1)
-			if len(lab) == 1:
-				lab = lab[0][:-7]
+			if '.topic' not in lab:
+				pass
 			else:
-				lab = lab[1][:-7]
-			if os.path.exists(os.getcwd() + "/" + destination + '/sequential/' + lab + '.xml'):
-				with open(destination + '/chapter/' + currentweek + '.xml', 'a') as chapter:
-					chapter.write(' <sequential url_name="' + lab + '"/>\n')
+				if len(lab) == 1:
+					lab = lab[0][:-7] #truncate .topic extension
+				else:
+					lab = lab[1][:-7]
+				if os.path.exists(os.getcwd() + "/" + destination + '/sequential/' + lab + '.xml'):
+					with open(destination + '/chapter/' + currentweek + '.xml', 'a') as chapter:
+						chapter.write(' <sequential url_name="' + lab + '"/>\n')
 
 
