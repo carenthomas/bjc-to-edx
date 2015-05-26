@@ -42,10 +42,13 @@ def stage_course(destination):
             f.write('<course url_name="2014_2" org="BJC" course="BJC_Course_Building_Test"/>')
     if 'about' not in dir_contents:
         os.mkdir(destination + '/about')
+        prepare_file('effort.html', destination + '/about/')
+        prepare_file('overview.html', destination + '/about/')
+        prepare_file('short_description.html', destination + '/about/')
     if 'assets' not in dir_contents:
         os.mkdir(destination + '/assets')
         with open(destination + '/assets/assets.xml', 'w') as f:
-            f.write('<assets/>\n')
+            f.write('<assets/>')
     if 'chapter' not in dir_contents:
         os.mkdir(destination + '/chapter')
         
@@ -58,6 +61,11 @@ def stage_course(destination):
         shutil.copyfile('defaultsettings.xml', prepare_file(destination + '.xml', destination + '/course/'))
     if 'html' not in dir_contents:
         os.mkdir(destination + '/html')
+    if 'info' not in dir_contents:
+        os.mkdir(destination + '/info')
+        prepare_file('handouts.html', destination + '/info/')
+        prepare_file('updates.html', destination + '/info/')
+        prepare_file('updates.items.json', destination + '/info/')
     if 'problem' not in dir_contents:
         os.mkdir(destination + '/problem')
     if 'static' not in dir_contents:
@@ -107,7 +115,7 @@ def main():
             description="Translates content from HTML source to edX compatible one based on XML.")
     parser.add_argument("-S", "--source", type=str, default="bjc-r",
             help="name of source folder")
-    parser.add_argument("-O", "--destination", type=str, default="Course",
+    parser.add_argument("-O", "--destination", type=str, default="2014_2",
             help="name of the destination folder")
     parser.add_argument("-F", "--file", type=str, nargs='+', default="",
             help="files to parse")
