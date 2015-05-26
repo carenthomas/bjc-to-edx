@@ -120,7 +120,7 @@ def remove_whitespace(el_inline):
 			i += 1 
 	return result 
 
-def fix_links(lines):
+def fix_links(lines, destination):
 	result = []
 	for line in lines:
 		if "href" in line:
@@ -141,15 +141,16 @@ def fix_links(lines):
 						new_line = ' '.join(el)
 						result.append(new_line)
 					else:
-						relevant = relevant.replace('href="', '')
-						if "../" in relevant:
-							modded_element = 'href=' + '"http://inst.eecs.berkeley.edu/~cs10/labs/' + relevant.replace("../", "")
-						elif '/bjc-r' in relevant:
-							modded_element = 'href=' + '"http://bjc.berkeley.edu' + relevant
-						elif '#' in relevant:
-							modded_element = 'href=' + relevant
-						else:
-							modded_element = 'href=' + '"http://bjc.berkeley.edu/' + relevant
+						relevant = relevant.replace('href="', '')[0:-1]
+					if "../" in relevant:
+						relevant = '/bjc-r/' + relevant.replace("../", "")
+					if "#" in relevant:
+						pass
+					else:
+						filename = relevant.rsplit('/', 1)[1]
+						modded_element = 'href=' + '"/static/' + filename + '"'
+						if os.path.exists(os.getcwd() + relevant):
+							copyfile(os.getcwd() + relevant, destination + '/static/' + filename)
 						el[index] = modded_element
 						new_line = ' '.join(el)
 						result.append(new_line)
@@ -169,15 +170,21 @@ def fix_links(lines):
 					new_line = ' '.join(el)
 					result.append(new_line)
 				else:
-					relevant = relevant.replace('src="', '')
+					relevant = relevant.replace('src="', '')[0:-1]
 					if "../" in relevant:
-						modded_element = 'src=' + '"http://inst.eecs.berkeley.edu/~cs10/labs/' + relevant.replace("../", "")
-					elif '/bjc-r' in relevant:
-						modded_element = 'src=' + '"http://bjc.berkeley.edu' + relevant
-					elif '#' in relevant:
-						modded_element = 'src=' + relevant
+						relevant = '/bjc-r/' + relevant.replace("../", "")
+
+					filename = relevant.rsplit('/', 1)
+					if len(filename) == 1:
+						#this happens when the source file lives in the current directory
+						#ERROR: the image will not be moved to the static folder
+						filename = filename[0]
 					else:
-						modded_element = 'src=' + '"http://bjc.berkeley.edu/' + relevant
+						filename = filename[1]
+					
+					modded_element = 'src=' + '"/static/' + filename + '"'
+					if os.path.exists(os.getcwd() + relevant):
+						copyfile(os.getcwd() + relevant, destination + '/static/' + filename)
 					el[index] = modded_element
 					new_line = ' '.join(el)
 					result.append(new_line)
@@ -283,7 +290,7 @@ def make_html(line, destination):
 
 	#		break
 		
-	lines = fix_links(lines)
+	lines = fix_links(lines, destination)
 	lines = insert_snap(lines)
 	lines = (' ').join(lines)
 	with open(output, 'w') as new_html:
@@ -372,16 +379,6 @@ def make_vertical(name, line, destination):
 	
 
 def convert_lab(filename, destination):	
-	dir_contents = os.listdir(destination)
-	if 'course.xml' not in dir_contents:
-		with open(destination + '/course.xml', 'w') as f:
-			f.write('<course url_name="2014" org="BerkeleyX" course="CS__10"/>')
-	if 'sequential' not in dir_contents:
-		os.mkdir(destination + '/sequential')
-	if 'vertical' not in dir_contents:
-		os.mkdir(destination + '/vertical')
-	if 'html' not in dir_contents:
-		os.mkdir(destination + '/html')
 
 	name = filename[:-6] # truncate .topic filename extention
 	lines = remove_comments(read_topicfile(filename))
