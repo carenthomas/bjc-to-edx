@@ -390,3 +390,30 @@ def convert_lab(filename, destination):
 				page_name = name + "_" + str(index)
 				make_page(page_name, lines[index], seq, destination)
 		seq.write("</sequential>")
+
+def place_labs(destination):
+
+	if not os.path.exists(os.getcwd() + '/lab-locations.txt'):
+		print('ERROR: file with locations not found in current directory.')
+		return
+	
+	with open('lab-locations.txt', 'r') as locations:
+		lablist = locations.readlines()
+
+	currentweek = 'Week1'
+	for item in lablist:
+		if 'Week' in item:
+			currentweek = (item.strip("\n")).replace(" ", "")[0:-1]			
+		elif item == '\n':
+			pass
+		else:
+			lab = ((item.strip("/n")).rsplit(" ", 1)[1][1:-1]).rsplit("/", 1)
+			if len(lab) == 1:
+				lab = lab[0][:-7]
+			else:
+				lab = lab[1][:-7]
+			if os.path.exists(os.getcwd() + "/" + destination + '/sequential/' + lab + '.xml'):
+				with open(destination + '/chapter/' + currentweek + '.xml', 'a') as chapter:
+					chapter.write(' <sequential url_name="' + lab + '"/>\n')
+
+

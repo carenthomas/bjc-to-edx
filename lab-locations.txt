@@ -1,6 +1,6 @@
 
 Week 1:
-Welcome to Snap! [intro_new/1-introduction.topic] 
+Welcome to Snap! [intro_new/1-introduction.topic]
 
 Week 2:
 Build Your Own Blocks intro_new/2-loops-variables.topic]
@@ -27,11 +27,9 @@ Recursive Reporters [recur/recursive-reporters.topic]
 Week 8:
 Tic Tac Toe [lists/tic-tac-toe.topic]
 
-Week 9:
-No Labs
+Week 9: No Labs
 
-Week 10:
-No Labs
+Week 10: No Labs
 
 Week 11:
 The Internet [areas/internet.topic]
@@ -44,8 +42,6 @@ Week 13:
 Besides Blocks: Data Structures in Python
 Besides Blocks: Data in Python
 
-Week 14:
-No Labs
+Week 14: No Labs
 
-Week 15: 
-No Labs
+Week 15: No Labs

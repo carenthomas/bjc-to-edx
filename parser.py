@@ -39,7 +39,7 @@ def stage_course(destination):
     dir_contents = os.listdir(destination)
     if 'course.xml' not in dir_contents:
         with open(destination + '/course.xml', 'w') as f:
-            f.write('<course url_name="2014" org="BerkeleyX" course="CS__10"/>')
+            f.write('<course url_name="2014_2" org="BJC" course="BJC_Course_Building_Test"/>')
     if 'about' not in dir_contents:
         os.mkdir(destination + '/about')
     if 'assets' not in dir_contents:
@@ -48,9 +48,11 @@ def stage_course(destination):
             f.write('<assets/>\n')
     if 'chapter' not in dir_contents:
         os.mkdir(destination + '/chapter')
-        for i in range(1, 14):
+        
+        for i in range(1, 16):
             with open(destination + '/chapter/Week' + str(i) + '.xml', 'w') as f:
                 f.write('<chapter display_name="Week ' + str(i) + '">\n')
+        
     if 'course' not in dir_contents:
         os.mkdir(destination + '/course')
         shutil.copyfile('defaultsettings.xml', prepare_file(destination + '.xml', destination + '/course/'))
@@ -62,6 +64,8 @@ def stage_course(destination):
         os.mkdir(destination + '/static')
     if 'sequential' not in dir_contents:
         os.mkdir(destination + '/sequential')
+    if 'tabs' not in dir_contents:
+        os.mkdir(destination + '/tabs')
     if 'vertical' not in dir_contents:
         os.mkdir(destination + '/vertical')
 
@@ -78,7 +82,8 @@ def bjc_to_edx(source, destination, files):
         os.remove(psuedo_topic) #figure out why this is being created in the first place
         print("Parsed lab " + psuedo_topic + '.\n')
 
-    for i in range(1, 14):
+    place_labs(destination)
+    for i in range(1, 16):
         with open(destination + '/chapter/Week' + str(i) + '.xml', 'a') as f:
                 f.write('</chapter>')
 
@@ -87,7 +92,7 @@ def bjc_to_edx(source, destination, files):
     if os.path.exists(tarred_file):
         os.remove(tarred_file)
 
-    make_tarfile(tarred_file, destination)
+    
     print("Course file ready for import.")
 
 
