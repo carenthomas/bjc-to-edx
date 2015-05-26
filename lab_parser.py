@@ -3,6 +3,7 @@ from os import listdir
 from os.path import isfile, join
 from shutil import copyfile, move 
 from functools import reduce
+from mc_parser import * 
 
 
 #########################################
@@ -19,7 +20,7 @@ from functools import reduce
 	### set of tags that should note where a certain piece of info lies ###
 	### please add to this set ### 
 tags = {"title:", "resource:", "quiz:", "assignment:", "group:", "forum:", "video:", "reading:", "big-idea:", "learning-goal:"}
-vertical_tags = {"resource:", "assignment:", "group:", "forum:"}
+vertical_tags = {"resource:", "assignment:", "group:", "quiz:", "forum:"}
 #NOTE: vertical_tag "quiz" is removed for now because quiz parser isn't working yet #
 
 ### helper functions ###
@@ -276,11 +277,11 @@ def make_html(line, destination):
 	lines = insert_title(title, lines)
 	
 	### check for quiz ###
-	for line in lines:
-		if "assessment-data" in line:
-				# lines = process_quiz(lines)
+	#for line in lines:
+	#	if "assessment-data" in line:
+				
 
-			break
+	#		break
 		
 	lines = fix_links(lines)
 	lines = insert_snap(lines)
@@ -334,8 +335,11 @@ def make_overview(name, output, destination):
 def make_page(name, line, output, destination):
 	output.write('  <vertical url_name="' + name + '"/>\n')
 	## check for quiz here, and call make_quiz instead
-	make_html(line, destination)
-	make_companion_xml(name, line, destination)
+	if line.split()[0] == "quiz:":
+		make_quiz(line.split()[-1][2:-1], destination)
+	else:
+		make_html(line, destination)
+		make_companion_xml(name, line, destination)
 	make_vertical(name, line, destination)
 
 
@@ -357,7 +361,13 @@ def make_vertical(name, line, destination):
 	
 	with open(prepare_file("vertical/" + name + ".xml", destination), 'a') as output:
 		output.write('<vertical display_name="' + title + '">\n')
-		output.write('  <html url_name="' + html_filename + '"/>\n')
+		if line:
+			if line.split()[0] == "quiz:":
+				output.write('  <problem url_name="' + html_filename + '"/>\n')
+			else:
+				output.write('  <html url_name="' + html_filename + '"/>\n')
+		else:
+			output.write('  <html url_name="' + html_filename + '"/>\n')
 		output.write("</vertical>")
 	
 
