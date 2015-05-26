@@ -1,5 +1,6 @@
 ### Comprehensive lab parser ### 
 from lab_parser import * 
+from reading_parser import * 
 from tar_file import *
 import shutil, os, argparse
 
@@ -34,8 +35,39 @@ def stage_files(args, lst):
                     sys.exit()
     return lst
 
+def stage_course(destination):
+    dir_contents = os.listdir(destination)
+    if 'course.xml' not in dir_contents:
+        with open(destination + '/course.xml', 'w') as f:
+            f.write('<course url_name="2014" org="BerkeleyX" course="CS__10"/>')
+    if 'about' not in dir_contents:
+        os.mkdir(destination + '/about')
+    if 'assets' not in dir_contents:
+        os.mkdir(destination + '/assets')
+        with open(destination + '/assets/assets.xml', 'w') as f:
+            f.write('<assets/>\n')
+    if 'chapter' not in dir_contents:
+        os.mkdir(destination + '/chapter')
+        for i in range(1, 14):
+            with open(destination + '/chapter/Week' + str(i) + '.xml', 'w') as f:
+                f.write('<chapter display_name="Week ' + str(i) + '">\n')
+    if 'course' not in dir_contents:
+        os.mkdir(destination + '/course')
+        shutil.copyfile('defaultsettings.xml', prepare_file(destination + '.xml', destination + '/course/'))
+    if 'html' not in dir_contents:
+        os.mkdir(destination + '/html')
+    if 'problem' not in dir_contents:
+        os.mkdir(destination + '/problem')
+    if 'static' not in dir_contents:
+        os.mkdir(destination + '/static')
+    if 'sequential' not in dir_contents:
+        os.mkdir(destination + '/sequential')
+    if 'vertical' not in dir_contents:
+        os.mkdir(destination + '/vertical')
 
 def bjc_to_edx(source, destination, files):
+    stage_course(destination)
+    convert_readings(destination)
     for f in files:
         psuedo_topic = f.rsplit('/', 1)[1]
         print("Adding lab " + psuedo_topic + "...")
@@ -45,6 +77,10 @@ def bjc_to_edx(source, destination, files):
         os.remove(destination + "/" + psuedo_topic)
         os.remove(psuedo_topic) #figure out why this is being created in the first place
         print("Parsed lab " + psuedo_topic + '.\n')
+
+    for i in range(1, 14):
+        with open(destination + '/chapter/Week' + str(i) + '.xml', 'a') as f:
+                f.write('</chapter>')
 
     print("Creating new .tar.gz file for import...")
     tarred_file = destination + ".tar.gz"
