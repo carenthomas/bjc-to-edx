@@ -1,0 +1,86 @@
+Week 1:
+No Readings
+
+Week 2:
+Prof. Havey's Intro to Abstraction : files/BH-Abstraction.txt
+Is Abstraction the Key to Computing: files/Is Abstracting the Key to Computing.pdf
+Why Software is Eating the World : http://www.wsj.com/articles/SB10001424053111903480904576512250915629460
+Scratch: Programming for All : files/scratchprogrammingarticle.pdf
+Learning to Code! : https://www.youtube.com/watch?v=dU1xS07N-FA
+
+Week 3:
+The Story of Alan Turing & His Machine : https://www.youtube.com/watch?v=CQhrMmbiaM0&feature=youtu.be
+Designing Games with a Purpose (GWAP) : files/GWAP.pdf
+Justices Split on Violent Games : http://www.nytimes.com/2011/06/28/us/28scotus.html
+Video Games Lecture : https://coursesharing.org/courses/6/lectures/11 (broken link)
+Slides : files/2012-01-25-CS10-L03-DG-Video-Games.pdf
+More readings on video games : http://cs10.org/sp15/resources/readings/video-games/
+Kinect's Future: A Game Controller in Everything : http://www.nbcnews.com/id/40077373/ns/technology_and_science-games/
+
+Week 4: 
+How Algorithms Shape Our World : http://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world
+BtB Chapter 1 : files/chapter1.pdf
+Program or Be Programmed : http://tedxtalks.ted.com/video/Douglas-Rushkoff-at-TEDxNYED
+Program or Be Programmed: A Guide : files/Rushkoff-Study-Guide.pdf
+Animating a Blockbuster : http://www.wired.com/2010/05/process_pixar/
+
+Week 5:
+No Readings
+
+Week 6:
+BtB Chapter 2 : files/chapter2.pdf
+BtB Chapter 4 Reading Segment 1 : files/BtB4-pt1.pdf
+BtB Chapter 4 Reading Segment 2 : files/BtB4-pt2.pdf
+Living in a Digital World : http://cacm.acm.org/magazines/2011/10/131393-living-in-a-digital-world/abstract
+BtB Chapter 3 : files/chapter3.pdf
+
+Week 7:
+How Moore's Law Works : http://computer.howstuffworks.com/moores-law.htm
+Free Lunch is Over : http://www.gotw.ca/publications/concurrency-ddj.htm
+What is IBM's Watson? : http://www.nytimes.com/2010/06/20/magazine/20Computer-t.html
+Brian Harvey's Al notes : files/BH-ai.txt
+The First Church of Robotics : http://www.nytimes.com/2010/08/09/opinion/09lanier.html?_r=0
+Spending Moore's dividend (CACM) : files/p62-larus.pdf
+
+Week 8:
+BtB Chapter 5 Reading Segment 1 : files/BtB5-pt1.pdf
+BtB Chapter 5 Reading Segment 2 : files/BtB5-pt2.pdf
+BtB Chapter 5 Reading Segment 3 : files/BtB5-pt3.pdf
+BtB Chapter 6 (27-37) : files/chapter6.pdf
+
+Week 9:
+No Readings
+
+Week 10:
+No Readings
+
+Week 11:
+BtB Chapter 7 : files/chapter7.pdf
+BtB Appendix : files/Btb_Appendix.pdf
+BtB Chapter 8 : files/chapter8.pdf
+TED: What is the Internet? : https://www.youtube.com/watch?v=XE_FPEFpHt4
+
+Week 12:
+The Heartbleed Bug : https://blog.agilebits.com/2014/04/08/imagine-no-ssl-encryption-its-scary-if-you-try/
+When Servers Bleed : https://medium.com/tales-from-6w/when-servers-bleed-804cdf4b48c1
+
+Week 13:
+Data Explosion Creates Revolution : http://www.sfgate.com/technology/dotcommentary/article/Web-2-0-Summit-Data-explosion-creates-revolution-2326463.php
+Data Mining : files/ch1.pdf 
+Data Pitfalls : http://searchenginewatch.com/sew/how-to/2289574/big-data-big-trouble-how-to-avoid-5-data-analysis-pitfalls
+Computing as Social Science : http://cacm.acm.org/magazines/2009/4/22953-computing-as-social-science/abstract
+Data Visualization : http://datavisualization.ch/
+Basic Statistics (Helpful for Project) : files/handlg_data_ch3.pdf
+
+Week 14:
+The Great Robot Race (Video) : https://www.youtube.com/watch?v=uoiJeIb0wBA
+Halting Problem Poem : http://introcs.cs.princeton.edu/java/76computability/halting-poem.html
+
+Week 15:
+Why is Quantum Different? : http://www.scientificamerican.com/article/what-makes-a-quantum-comp/
+Here is why we should be really excited about Quantum Computers : http://www.businessinsider.com/why-be-excited-about-quantum-computers-2015-4
+Man-made DNA can now Store Data for Millions of Years : https://gigaom.com/2015/02/17/man-made-dna-can-now-store-data-for-millions-of-years/
+DNA Storage : http://radar.oreilly.com/2012/08/dna-storage.html
+Quantum Leap : http://archive.fortune.com/2006/07/26/magazines/fortune/futureoftech_quantum.fortune/index.htm
+Twenty Top Predictions for life 100 years from now : http://www.bbc.com/news/magazine-16536598
+BtB: Conclusion : files/chapter9.pdf
