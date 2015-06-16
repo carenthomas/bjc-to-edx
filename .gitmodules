@@ -1,0 +1,6 @@
+[submodule "curriculum/bjc-r"]
+	path = curriculum/bjc-r
+	url = git@github.com:beautyjoy/bjc-r.git
+[submodule "curriculum/edc"]
+	path = curriculum/edc
+	url = git@github.com:bjc-edc/bjc-r.git
