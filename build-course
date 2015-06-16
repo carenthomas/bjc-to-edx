@@ -1,1 +1,4 @@
-code/parser.py
+#! /usr/bin/env bash
+
+# Currently this is just a shortcut wrapper...
+python code/parser.py $@
