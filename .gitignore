@@ -1,3 +1,5 @@
+.DS_Store
+*~
 *.pyc
-2014/
 *.tar.gz
+tmp/
