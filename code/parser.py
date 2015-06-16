@@ -129,6 +129,7 @@ def main():
     if args.destination not in os.listdir('.'):
         y, n = True, False
         temp = input("edX course folder '" + args.destination + "' not found. Create new folder in this directory? (y/n)")
+        print(temp)
         if temp:
             os.mkdir(args.destination)
         else:
