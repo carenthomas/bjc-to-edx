@@ -1,6 +1,6 @@
-### Comprehensive lab parser ### 
-from lab_parser import * 
-from reading_parser import * 
+### Comprehensive lab parser ###
+from lab_parser import *
+from reading_parser import *
 from tar_file import *
 import shutil, os, argparse
 
@@ -51,11 +51,11 @@ def stage_course(destination):
             f.write('<assets/>')
     if 'chapter' not in dir_contents:
         os.mkdir(destination + '/chapter')
-        
+
         for i in range(1, 16):
             with open(destination + '/chapter/Week' + str(i) + '.xml', 'w') as f:
                 f.write('<chapter display_name="Week ' + str(i) + '">\n')
-        
+
     if 'course' not in dir_contents:
         os.mkdir(destination + '/course')
         shutil.copyfile('defaultsettings.xml', prepare_file(destination + '.xml', destination + '/course/'))
@@ -100,7 +100,7 @@ def bjc_to_edx(source, destination, files):
     if os.path.exists(tarred_file):
         os.remove(tarred_file)
 
-    
+
     print("Course file ready for import.")
 
 
@@ -113,7 +113,9 @@ def main():
     """
     parser = argparse.ArgumentParser(
             description="Translates content from HTML source to edX compatible one based on XML.")
-    parser.add_argument("-S", "--source", type=str, default="bjc-r",
+    parser.add_argument("-S", "--source",
+            type=str,
+            default="curriculum/bjc-r",
             help="name of source folder")
     parser.add_argument("-O", "--destination", type=str, default="2014_2",
             help="name of the destination folder")

@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
 # Currently this is just a shortcut wrapper...
-python code/parser.py $@
+python3 code/parser.py $@
