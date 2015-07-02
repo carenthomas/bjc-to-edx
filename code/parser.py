@@ -5,7 +5,7 @@ from tar_file import *
 import shutil, os, argparse
 
 def stage_files(args, lst):
-    path = "bjc-r/topic/berkeley_bjc/"
+    path = "curriculum/bjc-r/topic/berkeley_bjc/"
     found = False
     if args == "":
         for folder in os.listdir(path):
