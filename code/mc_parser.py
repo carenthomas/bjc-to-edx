@@ -63,7 +63,7 @@ def make_quiz(source, destination):
 		xml_file.write(xml_out)
 
 
-make_quiz('bjc-r/cur/programming/intro/snap/test-yourself-go-team.html', 'Course')
+# make_quiz('bjc-r/cur/programming/intro/snap/test-yourself-go-team.html', 'Course')
 
 
 

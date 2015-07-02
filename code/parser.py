@@ -115,7 +115,7 @@ def main():
             description="Translates content from HTML source to edX compatible one based on XML.")
     parser.add_argument("-S", "--source",
             type=str,
-            default="curriculum/bjc-r",
+            default="curriculum/bjc-r/",
             help="name of source folder")
     parser.add_argument("-O", "--destination", type=str, default="2014_2",
             help="name of the destination folder")
