@@ -115,7 +115,7 @@ def main():
             description="Translates content from HTML source to edX compatible one based on XML.")
     parser.add_argument("-S", "--source",
             type=str,
-            default="curriculum/bjc-r/",
+            default="curriculum/bjc-r",
             help="name of source folder")
     parser.add_argument("-O", "--destination", type=str, default="2014_2",
             help="name of the destination folder")
@@ -125,9 +125,9 @@ def main():
 
 
     if args.source not in os.listdir('.'):
-        print("---bjc-r folder not found in current directory. Parsing cancelled.")
-        print("Closing program...")
-        sys.exit()
+        print("Source folder {} not found in current directory.".format(args.source))
+        print("Exiting.")
+        sys.exit(1)
     if args.destination not in os.listdir('.'):
         y, n = True, False
         temp = input("edX course folder '" + args.destination + "' not found. Create new folder in this directory? (y/n)")
