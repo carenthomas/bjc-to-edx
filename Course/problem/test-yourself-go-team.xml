@@ -1,0 +1,18 @@
+<problem>
+<p>b'Without trying this in snap, try to answer the following question:\n                    \n\n                    What does the following set of scripts do when the Turn1 message is broadcast?\n                \n\xc2\xa0\xc2\xa0\xc2\xa0\xc2\xa0 \n                    \n\n\n                    Choose one:'</p>
+<multiplechoiceresponse>
+  <choicegroup type="MultipleChoice">
+<    choice correct="false">b'The sprite says "Go!" and then "Team!" and then stops.'</choice>
+<    choice correct="true">b'The sprite repeatedly says "Go!" and then "Team!" until you hit the red Stop button.'</choice>
+<    choice correct="false">b'Nothing happens - the script does not work.'</choice>
+<    choice correct="false">b'The sprite says "Go!" and then "Team!", repeating a few times, and then stops by itself.'</choice>
+  </choicegroup>
+</multiplechoiceresponse>
+
+<solution>
+<div class="detailed-solution">
+<p>Explanation</p>
+<p>b'Right!\n                        Here, we see an infinite loop, or a never-ending loop. \n                        Whenever this happens in Snap!, we can always stop it by \n                        pressing the Stop button at the top right of the window, just above the stage.\n                    \n\n                        Why does this happen? Well, when you the Turn1 message is first broadcast,\n                        the sprite says  Go!\n                        for half a second, and then broadcasts a Turn2 message.\n                    \n\n                        If there is any character that has a script that responds to the Turn2\n                        message, it will perform that script. \n                        In this case, the same sprite has a script that responds to the Turn2\n                        message, and so it will run the corresponding script. It says Team!\n                        and then broadcasts a Turn1\n                        message. But, it also has a script that responds to the Turn1\n                        message, which in turn sends a Turn2\n                        message, and so on. This continues until the scripts are forced to stop.'</p>
+</div>
+</solution>
+</problem>

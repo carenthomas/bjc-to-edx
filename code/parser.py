@@ -135,9 +135,8 @@ def main():
         if temp:
             os.mkdir(args.destination)
         else:
-            print("---edX course folder not found in current directory. Parsing cancelled.")
-            print("Closing program...")
-            sys.exit()
+            print("edX course folder not found in current directory. Parsing cancelled.")
+            sys.exit(1)
 
 
     files = []
